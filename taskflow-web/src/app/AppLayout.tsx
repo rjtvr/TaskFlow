@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './AppLayout.module.scss';
 
-// Add Projects and Dashboard here as those pages are built.
-const NAV_ITEMS = [{ to: '/kit', label: 'UI kit' }];
+const NAV_ITEMS = [
+  { to: '/projects', label: 'Projects' },
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/kit', label: 'UI kit' },
+];
 
 export function AppLayout() {
   // Moves to uiSlice in Step 5; local state until the store exists.

@@ -109,4 +109,5 @@ $sidebar-width: 240px;
 .main {
   grid-area: main;
   min-width: 0;
+  padding: var(--space-4);
 }
