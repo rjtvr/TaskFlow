@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.body { flex: 1; }
+
+.footer {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
