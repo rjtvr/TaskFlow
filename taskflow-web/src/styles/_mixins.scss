@@ -1,7 +1,9 @@
+@use 'sass:map';
+
 $breakpoints: (sm: 576px, md: 768px, lg: 1024px, xl: 1280px);
 
 @mixin up($bp) {
-  @media (min-width: map-get($breakpoints, $bp)) { @content; }
+  @media (min-width: map.get($breakpoints, $bp)) { @content; }
 }
 
 @mixin focus-ring {

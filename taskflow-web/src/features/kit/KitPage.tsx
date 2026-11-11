@@ -37,7 +37,7 @@ export default function KitPage() {
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <header className={styles.header}>
         <h1>UI kit</h1>
         <Button variant="secondary" onClick={toggleTheme} aria-pressed={theme === 'dark'}>
@@ -141,6 +141,6 @@ export default function KitPage() {
           <Button onClick={() => setModalOpen(false)}>Close</Button>
         </Modal>
       </Section>
-    </main>
+    </div>
   );
 }
