@@ -1,0 +1,32 @@
+@use '@/styles/mixins' as m;
+
+.list {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+  padding: var(--space-2) var(--space-4);
+  font: inherit;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  &:hover { color: var(--color-text); }
+  &:focus-visible { @include m.focus-ring; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.panel {
+  padding: var(--space-4) 0;
+  &:focus-visible { @include m.focus-ring; }
+}

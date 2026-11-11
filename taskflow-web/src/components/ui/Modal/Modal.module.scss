@@ -1,0 +1,18 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--color-backdrop);
+}
+
+.dialog {
+  width: min(480px, 100%);
+  max-height: 90dvh;
+  overflow: auto;
+  padding: var(--space-5);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border-radius: var(--radius);
+}

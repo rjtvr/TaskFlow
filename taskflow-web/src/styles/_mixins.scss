@@ -1,0 +1,24 @@
+$breakpoints: (sm: 576px, md: 768px, lg: 1024px, xl: 1280px);
+
+@mixin up($bp) {
+  @media (min-width: map-get($breakpoints, $bp)) { @content; }
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Shared look for text-like form controls (Input, Select).
+@mixin control {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  &:focus-visible { @include focus-ring; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+  &[aria-invalid='true'] { border-color: var(--color-danger); }
+}

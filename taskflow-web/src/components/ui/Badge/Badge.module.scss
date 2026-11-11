@@ -1,0 +1,20 @@
+// Each tone sets --tone; the badge tints its background from it, so text and
+// tint stay in sync and both themes work from the token values alone.
+.badge {
+  --tone: var(--color-text-muted);
+  display: inline-block;
+  padding: 2px var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tone) 40%, transparent);
+  border-radius: 999px;
+}
+
+.neutral { --tone: var(--color-text-muted); }
+.primary { --tone: var(--color-primary); }
+.success { --tone: var(--color-success); }
+.warning { --tone: var(--color-warning); }
+.danger  { --tone: var(--color-danger); }
