@@ -1,0 +1,112 @@
+@use '@/styles/mixins' as m;
+
+$sidebar-width: 240px;
+
+// Mobile first: one column; the sidebar is a fixed drawer that slides in.
+.layout {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: 'header' 'main';
+  min-height: 100dvh;
+
+  @include m.up(md) {
+    grid-template-columns: $sidebar-width minmax(0, 1fr);
+    grid-template-areas: 'header header' 'sidebar main';
+  }
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand { font-weight: 700; }
+
+.menuButton {
+  padding: var(--space-1) var(--space-2);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text);
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  &:focus-visible { @include m.focus-ring; }
+
+  @include m.up(md) { display: none; }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  position: fixed;
+  inset: 56px auto 0 0;
+  z-index: 20;
+  width: $sidebar-width;
+  padding: var(--space-4);
+  overflow-y: auto;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  transform: translateX(-100%);
+  // visibility keeps a closed drawer out of the tab order and screen readers.
+  visibility: hidden;
+  transition: transform 0.2s ease, visibility 0s linear 0.2s;
+
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+
+  &.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.2s ease;
+  }
+
+  @include m.up(md) {
+    position: static;
+    transform: none;
+    visibility: visible;
+  }
+}
+
+.scrim {
+  position: fixed;
+  inset: 56px 0 0;
+  z-index: 10;
+  background: var(--color-backdrop);
+
+  @include m.up(md) { display: none; }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navLink {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius);
+  &:hover { background: var(--color-bg); }
+  &:focus-visible { @include m.focus-ring; }
+}
+
+.active {
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-bg);
+}
+
+.main {
+  grid-area: main;
+  min-width: 0;
+}
